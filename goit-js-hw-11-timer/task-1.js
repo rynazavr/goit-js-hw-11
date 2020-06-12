@@ -1,4 +1,5 @@
 const refs = {
+  divBox: document.querySelector("#timer-1"),
   dataDays: document.querySelector('span[data-value="days"]'),
   dataHours: document.querySelector('span[data-value="hours"]'),
   dataMinutes: document.querySelector('span[data-value="mins"]'),
@@ -6,10 +7,10 @@ const refs = {
 };
 const timer = {
   start() {
-    const targetDate = new Date("Jul 17, 2019");
+    const targetDate = new Date("Jul 17, 2020");
     setInterval(() => {
       const currentTime = Date.now();
-      const deltaTime = currentTime - targetDate;
+      const deltaTime = targetDate - currentTime;
       //   console.log(deltaTime);
       updateTimer(deltaTime);
     }, 1000);
@@ -18,12 +19,13 @@ const timer = {
 timer.start();
 
 function updateTimer(time) {
-  const days = pad(Math.floor(time / (1000 * 60 * 60 * 24)));
+  const days = Math.floor(time / (1000 * 60 * 60 * 24));
   const hours = pad(
     Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
   );
   const minutes = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
   const seconds = pad(Math.floor((time % (1000 * 60)) / 1000));
+
   refs.dataDays.textContent = days;
   refs.dataHours.textContent = hours;
   refs.dataMinutes.textContent = minutes;
