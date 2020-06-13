@@ -8,12 +8,16 @@ const refs = {
 const timer = {
   start() {
     const targetDate = new Date("Jul 17, 2020");
-    setInterval(() => {
-      const currentTime = Date.now();
-      const deltaTime = targetDate - currentTime;
-      //   console.log(deltaTime);
-      updateTimer(deltaTime);
-    }, 1000);
+    if (Date.now() < targetDate) {
+      timerId = setInterval(() => {
+        const currentTime = Date.now();
+        const deltaTime = targetDate - currentTime;
+        //   console.log(deltaTime);
+        updateTimer(deltaTime);
+      }, 1000);
+    } else {
+      clearInterval(timerId);
+    }
   },
 };
 timer.start();

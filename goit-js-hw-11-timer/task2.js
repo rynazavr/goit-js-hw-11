@@ -1,6 +1,6 @@
 const parag = document.querySelector(".js_text");
 const logicPrint = {
-  arrText: ["Hello, Max. Please, check my homework =)"],
+  arrText: ["Hello, Max.", "Please, check my homework =)"],
   start() {
     let counterLetters = 0;
     let counterEl = 0;
@@ -20,7 +20,7 @@ const logicPrint = {
       }
 
       this.printText(letters);
-    }, 100);
+    }, 120);
   },
 
   printText(letters) {
