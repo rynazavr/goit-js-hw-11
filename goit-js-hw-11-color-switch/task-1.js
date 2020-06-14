@@ -19,7 +19,7 @@ const colorSwitcher = {
   // isActive: false,
   start() {
     const min = 0;
-    const max = colors.length;
+    const max = colors.length - 1;
     // if (this.isActive) {
     // return
     // }
