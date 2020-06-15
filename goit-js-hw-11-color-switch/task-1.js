@@ -16,14 +16,14 @@ const refs = {
 
 const colorSwitcher = {
   // intervalId = null,
-  // isActive: false,
+  isActive: false,
   start() {
+    if (this.isActive) {
+      return;
+    }
+    this.isActive = true;
     const min = 0;
     const max = colors.length - 1;
-    // if (this.isActive) {
-    // return
-    // }
-    //   this.isActive = true;
     this.intervalId = setInterval(() => {
       document.body.style.background =
         colors[randomIntegerFromInterval(min, max)];
@@ -31,7 +31,8 @@ const colorSwitcher = {
   },
   stop() {
     clearInterval(this.intervalId);
-    // this.intervalId = null;
+    this.intervalId = null;
+    this.isActive = false;
   },
 };
 refs.buttonStart.addEventListener(
